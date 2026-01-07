@@ -119,4 +119,71 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     }, 2000);
+
+    // --- Matrix Rain Effect ---
+    const canvas = document.getElementById('matrix-rain');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const nums = '0123456789';
+    const alphabet = katakana + latin + nums;
+
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    const rainDrops = [];
+    for (let i = 0; i < columns; i++) {
+        rainDrops[i] = 1;
+    }
+
+    const draw = () => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#0F0'; // Green text
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < rainDrops.length; i++) {
+            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                rainDrops[i] = 0;
+            }
+            rainDrops[i]++;
+        }
+    };
+
+    setInterval(draw, 30);
+
+    // Resize canvas on window resize
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // --- Typing Effect for Sub-Hero ---
+    const subHero = document.querySelector('.sub-hero');
+    const textToType = "KONGU ENGINEERING COLLEGE";
+    subHero.textContent = "";
+    subHero.classList.add('typing-effect');
+
+    let charIndex = 0;
+    function typeText() {
+        if (charIndex < textToType.length) {
+            subHero.textContent += textToType.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeText, 75); // Typing speed
+        } else {
+            subHero.classList.remove('typing-effect'); // Stop blinking cursor
+        }
+    }
+
+    // Start typing after a short delay
+    setTimeout(typeText, 500);
+
 });

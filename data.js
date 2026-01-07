@@ -119,5 +119,44 @@ const eventData = [
             "Balaji Hariharan S: 87548 87575",
             "Jabastin A: 79046 86738"
         ]
+    },
+    {
+        id: "lock-and-seek",
+        title: "Lock & Seek",
+        icon: "fa-lock",
+        description: "A thrilling mystery-solving event where participants decipher clues, unlock riddles, and race against time to find the hidden treasure. Test your logic and observation skills.",
+        teamSize: "2 - 3 Members",
+        rules: [
+            "Teams must solve riddles to progress to the next stage.",
+            "Time limits will be strictly enforced for each clue.",
+            "No use of mobile phones unless specified.",
+            "Fair play is mandatory; malpractice leads to disqualification.",
+            "Judges' decisions are final."
+        ],
+        coordinators: [
+            "Pooja",
+            "Bhuvaneshwari G",
+            "Lakshitha M G"
+        ]
+    },
+    {
+        id: "innosell",
+        title: "InnoSell",
+        icon: "fa-lightbulb",
+        description: "A pitch-perfect event where creativity meets commerce. Showcase your innovative product ideas and marketing strategies to potential investors.",
+        teamSize: "1 - 3 Members",
+        rules: [
+            "Pitch your innovative product or service.",
+            "Explain the problem, solution, and business model.",
+            "Judges will evaluate creativity, viability, and presentation.",
+            "Time limit: 5-7 minutes per team.",
+            "Prototype or visual aids are encouraged."
+        ],
+        coordinators: [
+            "Sam Anderson Y",
+            "Sugumar M",
+            "Deepsikha K",
+            "Ruchitha T U"
+        ]
     }
 ];

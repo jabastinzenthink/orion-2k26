@@ -1,0 +1,160 @@
+/* Matrix Rain Canvas */
+#matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Behind everything */
+    opacity: 0.15;
+    /* Subtle enough to not distract */
+}
+
+/* CRT Flicker */
+body {
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.98;
+    }
+
+    5% {
+        opacity: 0.95;
+    }
+
+    10% {
+        opacity: 0.98;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.98;
+    }
+}
+
+/* Typing Effect Cursor */
+.typing-effect {
+    border-right: 2px solid var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--accent);
+    }
+}
+
+/* Pulse Glow for Cards */
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 255, 65, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 65, 0);
+    }
+}
+
+.event-card:hover {
+    animation: pulse-green 1.5s infinite;
+}
+
+/* Glitch Image Effect (for future use or subtle text) */
+.glitch-large {
+    position: relative;
+}
+
+.glitch-large::before,
+.glitch-large::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+}
+
+.glitch-large::before {
+    left: 2px;
+    text-shadow: -1px 0 #00ff41;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch-large::after {
+    left: -2px;
+    text-shadow: -1px 0 #ccff00;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip: rect(20px, 9999px, 15px, 0);
+    }
+
+    20% {
+        clip: rect(50px, 9999px, 60px, 0);
+    }
+
+    40% {
+        clip: rect(80px, 9999px, 25px, 0);
+    }
+
+    60% {
+        clip: rect(10px, 9999px, 85px, 0);
+    }
+
+    80% {
+        clip: rect(40px, 9999px, 55px, 0);
+    }
+
+    100% {
+        clip: rect(70px, 9999px, 90px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(60px, 9999px, 90px, 0);
+    }
+
+    20% {
+        clip: rect(10px, 9999px, 20px, 0);
+    }
+
+    40% {
+        clip: rect(30px, 9999px, 60px, 0);
+    }
+
+    60% {
+        clip: rect(80px, 9999px, 10px, 0);
+    }
+
+    80% {
+        clip: rect(50px, 9999px, 30px, 0);
+    }
+
+    100% {
+        clip: rect(20px, 9999px, 70px, 0);
+    }
+}
