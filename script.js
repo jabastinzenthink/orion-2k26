@@ -6,8 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const clickSound = document.getElementById('ui-click');
     function playClickSound() {
         if (clickSound) {
+            clickSound.volume = 1.0;
             clickSound.currentTime = 0;
-            clickSound.play().catch(e => console.log("Audio play blocked", e));
+            const playPromise = clickSound.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Audio play failed:", error);
+                });
+            }
         }
     }
 
@@ -29,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.addEventListener('click', () => {
             playClickSound();
-            // Small delay to ensure sound starts before navigation
+            // Increased delay to 400ms to ensure sound is audible
             setTimeout(() => {
                 window.location.href = `rules.html?id=${event.id}`;
-            }, 150);
+            }, 400);
         });
         eventsGrid.appendChild(card);
     });
