@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Access - ORION 2K26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific overrides for the rules page */
+        .rules-container {
+            max-width: 900px;
+            margin: 120px auto 60px;
+            /* Offset for fixed nav */
+            padding: 40px;
+            background: rgba(14, 14, 14, 0.95);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+            position: relative;
+            min-height: 60vh;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            color: black;
+        }
+
+        .event-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .event-title {
+            font-family: var(--font-head);
+            font-size: 3rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .event-subtitle {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            color: var(--highlight);
+            margin-top: 10px;
+        }
+
+        .rules-section {
+            margin-bottom: 40px;
+        }
+
+        .rules-section h3 {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .rules-content {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        .rules-list {
+            list-style: none;
+        }
+
+        .rules-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .rules-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+            font-weight: bold;
+        }
+
+        .coordinator-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 2px solid var(--border-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+    <div class="scanline"></div>
+    <canvas id="matrix-rain"></canvas>
+
+    <!-- Navigation -->
+    <nav class="cyber-nav">
+        <div class="logo glitch" data-text="ORION 2K26" onclick="window.location.href='index.html'">ORION 2K26</div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">RETURN TO BASE</a>
+        </div>
+    </nav>
+
+    <div class="rules-container">
+        <a href="index.html#events" class="back-btn">
+            <i class="fas fa-chevron-left"></i> BACK TO OPERATIONS
+        </a>
+
+        <div id="content-area">
+            <!-- Content injected via JS -->
+            <div style="text-align: center; color: var(--text-secondary);">
+                <h2>LOADING PROTOCOLS...</h2>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ORION. SYSTEM ONLINE.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Matrix Rain Effect (Simplified for this page)
+            const canvas = document.getElementById('matrix-rain');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+            const rainDrops = Array(Math.ceil(columns)).fill(1);
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#0F0';
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < rainDrops.length; i++) {
+                    const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                    if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
+                    rainDrops[i]++;
+                }
+            }
+            setInterval(draw, 30);
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            // Parse URL Parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get('id');
+            const event = eventData.find(e => e.id === eventId);
+            const contentArea = document.getElementById('content-area');
+
+            if (event) {
+                // Generate HTML
+                let rulesHtml = '<ul class="rules-list">';
+                event.rules.forEach(rule => {
+                    rulesHtml += `<li>${rule}</li>`;
+                });
+                rulesHtml += '</ul>';
+
+                let coordsHtml = '';
+                event.coordinators.forEach(coord => {
+                    coordsHtml += `<div class="coordinator-card">${coord}</div>`;
+                });
+
+                contentArea.innerHTML = `
+                    <div class="event-header">
+                        <div class="event-title">${event.title} <i class="fas ${event.icon}" style="font-size: 0.6em; color: var(--accent); vertical-align: middle; margin-left: 15px;"></i></div>
+                        <div class="event-subtitle">${event.subtitle || ''}</div>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>MISSION BRIEF</h3>
+                        <div class="rules-content">
+                            <p>${event.description}</p>
+                        </div>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>ROSTER SIZE</h3>
+                        <div class="rules-content">
+                            <p>${event.teamSize}</p>
+                        </div>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>PROTOCOL (RULES)</h3>
+                        <div class="rules-content">
+                            ${rulesHtml}
+                        </div>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>MISSION COMMANDERS</h3>
+                        <div class="rules-content">
+                            ${coordsHtml}
+                        </div>
+                    </div>
+                `;
+            } else {
+                contentArea.innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h1 style="color: var(--accent); font-size: 3rem; margin-bottom: 20px;">404: DATA NOT FOUND</h1>
+                        <p style="font-family: var(--font-mono); color: var(--text-secondary);">The requested protocol ID could not be retrieved from the central database.</p>
+                        <a href="index.html" class="cta-button" style="margin-top: 30px;">RETURN TO BASE</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+
+</html>

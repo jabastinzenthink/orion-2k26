@@ -1,15 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Render Events ---
     const eventsGrid = document.getElementById('events-grid');
-    const modal = document.getElementById('event-modal');
-    const closeModal = document.querySelector('.close-modal');
-
-    // Modal Elements
-    const mTitle = document.getElementById('modal-title');
-    const mDesc = document.getElementById('modal-desc');
-    const mTeam = document.getElementById('modal-team');
-    const mRules = document.getElementById('modal-rules');
-    const mCoords = document.getElementById('modal-coordinators');
 
     // Render Event Cards
     eventData.forEach(event => {
@@ -19,53 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.innerHTML = `
             <div class="card-icon"><i class="fas ${event.icon}"></i></div>
-            <h3 class="card-title">${event.title} <span style="font-size:0.8em; color:var(--accent);">${event.subtitle || ''}</span></h3>
+            <h3 class="card-title">${event.title}</h3>
+            <div style="color: var(--highlight); font-family: var(--font-mono); margin-bottom: 15px; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">
+                ${event.subtitle || ''}
+            </div>
             <p class="card-desc">${event.description}</p>
             <div class="read-more">Access Data <i class="fas fa-chevron-right"></i></div>
         `;
 
-        card.addEventListener('click', () => openModal(event));
+        card.addEventListener('click', () => {
+            window.location.href = `rules.html?id=${event.id}`;
+        });
         eventsGrid.appendChild(card);
-    });
-
-    // --- Modal Logic ---
-    function openModal(event) {
-        mTitle.textContent = event.title;
-        mDesc.textContent = event.description;
-        mTeam.textContent = event.teamSize;
-
-        // Clear previous list items
-        mRules.innerHTML = '';
-        mCoords.innerHTML = '';
-
-        // Populate Rules
-        event.rules.forEach(rule => {
-            const li = document.createElement('li');
-            li.textContent = rule;
-            mRules.appendChild(li);
-        });
-
-        // Populate Coordinators
-        event.coordinators.forEach(coord => {
-            const li = document.createElement('li');
-            li.textContent = coord;
-            mCoords.appendChild(li);
-        });
-
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-    }
-
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
     });
 
     // --- Countdown Timer ---

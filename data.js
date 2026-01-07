@@ -2,6 +2,7 @@ const eventData = [
     {
         id: "reboot-the-waste",
         title: "Reboot The Waste()",
+        subtitle: "(Waste Management)",
         icon: "fa-dumpster-fire",
         description: "An innovative and awareness-driven event that challenges participants to rethink waste management using creativity and technology. Analyze real-world waste problems and propose smart, sustainable solutions.",
         teamSize: "1 - 3 Members",
@@ -23,6 +24,7 @@ const eventData = [
     {
         id: "brandit",
         title: "BrandIt",
+        subtitle: "(Ad Zap)",
         icon: "fa-bullhorn",
         description: "An on-spot advertising event where participants receive a brand/topic instantly and perform a short advertisement. Tests creativity, spontaneity, and acting skills.",
         teamSize: "1 - 3 Members",
@@ -43,6 +45,7 @@ const eventData = [
     {
         id: "reel-rush",
         title: "Reel Rush",
+        subtitle: "(Short Film)",
         icon: "fa-video",
         description: "Short film competition. Themes: 'Digital Silence', 'Ctrl+Alt+Reset', '404: Dreams Not Found', 'The Parallel Universe', 'Dark Mode'.",
         teamSize: "Max 5 Members",
@@ -64,6 +67,7 @@ const eventData = [
     {
         id: "brain-blitz",
         title: "Brain Blitz",
+        subtitle: "(Quiz)",
         icon: "fa-brain",
         description: "The Ultimate Quiz Challenge. A fast-paced event testing knowledge in GK, technology, science, and current affairs.",
         teamSize: "1 - 2 Members",
@@ -105,6 +109,7 @@ const eventData = [
     {
         id: "fix-and-flex",
         title: "Fix and Flex",
+        subtitle: "(Code Debugging)",
         icon: "fa-bug",
         description: "Project Debugging is a fun-filled technical event where debugging meets web design. Participants will be given a broken website (HTML, CSS, JavaScript) filled with bugs, alignment issues, and missing features. Mission: Find bugs, fix issues, and complete missing features.",
         teamSize: "Individual Participation",
@@ -126,6 +131,7 @@ const eventData = [
     {
         id: "lock-and-seek",
         title: "Lock & Seek",
+        subtitle: "(Treasure Hunt)",
         icon: "fa-lock",
         description: "A thrilling mystery-solving event where participants decipher clues, unlock riddles, and race against time to find the hidden treasure. Test your logic and observation skills.",
         teamSize: "2 - 3 Members",
@@ -145,6 +151,7 @@ const eventData = [
     {
         id: "innosell",
         title: "InnoSell",
+        subtitle: "(Product Pitching)",
         icon: "fa-lightbulb",
         description: "A pitch-perfect event where creativity meets commerce. Showcase your innovative product ideas and marketing strategies to potential investors.",
         teamSize: "1 - 3 Members",
