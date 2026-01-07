@@ -151,16 +151,22 @@ const eventData = [
     {
         id: "innosell",
         title: "InnoSell",
-        subtitle: "(Product Pitching)",
+        subtitle: "(Paper / Ideathon / Marketing)",
         icon: "fa-lightbulb",
-        description: "A pitch-perfect event where creativity meets commerce. Showcase your innovative product ideas and marketing strategies to potential investors.",
-        teamSize: "1 - 3 Members",
+        description: "InnoSell consists of three technical sub-events: Paper Presentation, Ideathon, and Marketing. Choose your arena and showcase your technical and business acumen.",
+        teamSize: "Varies by Sub-event (2-3 Members)",
         rules: [
-            "Pitch your innovative product or service.",
-            "Explain the problem, solution, and business model.",
-            "Judges will evaluate creativity, viability, and presentation.",
-            "Time limit: 5-7 minutes per team.",
-            "Prototype or visual aids are encouraged."
+            "Participants are permitted to register for only one sub-event under InnoSell.",
+            "All events and presentations must be technical in nature.",
+            "----------------",
+            "SUB-EVENT: PAPER PRESENTATION & IDEATHON",
+            "Team Size: Max 2 members.",
+            "Topic: Participants are free to select their own technical topic.",
+            "Ideathon Requirement: Must be presented with a prototype or working model.",
+            "----------------",
+            "SUB-EVENT: MARKETING",
+            "Team Size: Max 3 members.",
+            "Requirement: Participants must market their own product."
         ],
         coordinators: [
             "Sam Anderson Y",

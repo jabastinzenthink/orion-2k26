@@ -142,4 +142,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start typing after a short delay
     setTimeout(typeText, 500);
 
+    // --- Doomsday Sound Control ---
+    const audio = document.getElementById('doomsday-theme');
+
+    // Create Toggle Button
+    const nav = document.querySelector('.cyber-nav');
+    const soundBtn = document.createElement('button');
+    soundBtn.className = 'sound-toggle';
+    soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    soundBtn.title = "Initialize Audio Protocol";
+    nav.appendChild(soundBtn);
+
+    let isPlaying = false;
+    audio.volume = 0.5;
+
+    // Browser Autoplay Policy Workaround: Start on first user interaction
+    function initAudio() {
+        audio.play().then(() => {
+            isPlaying = true;
+            soundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            soundBtn.classList.add('active');
+        }).catch(err => {
+            console.log("Audio autoplay blocked, waiting for interaction.");
+        });
+        document.removeEventListener('click', initAudio);
+    }
+
+    document.addEventListener('click', initAudio, { once: true });
+
+    soundBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent re-triggering initAudio if clicked first
+        if (isPlaying) {
+            audio.pause();
+            soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            soundBtn.classList.remove('active');
+            isPlaying = false;
+        } else {
+            audio.play();
+            soundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            soundBtn.classList.add('active');
+            isPlaying = true;
+        }
+    });
+
 });

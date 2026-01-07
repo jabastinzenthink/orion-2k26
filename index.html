@@ -106,45 +106,74 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Communications Section (Holographic Design) -->
     <section id="contact" class="contact-section">
         <div class="section-header">
-            <h2 class="section-title">BASE COMMAND</h2>
+            <h2 class="section-title">COMMUNICATIONS ARRAY</h2>
             <div class="section-line"></div>
         </div>
-        <div class="contact-terminal">
-            <div class="terminal-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="terminal-title">LOCATION_DATA.EXE</span>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <i class="fas fa-university"></i>
-                    <div>
-                        <h4>DEPARTMENT</h4>
-                        <p>Department of Computer Applications</p>
-                    </div>
+
+        <div class="hud-grid">
+            <!-- Location Node -->
+            <div class="hud-card location-card">
+                <div class="hud-header">
+                    <i class="fas fa-map-marked-alt"></i> GEO_COORDINATES
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <div>
-                        <h4>COORDINATES</h4>
-                        <p>Kongu Engineering College,<br>Perundurai, Erode - 638060</p>
+                <div class="hud-body">
+                    <p class="hud-label">SECTOR</p>
+                    <p class="hud-val">Dept. of Computer Applications</p>
+
+                    <p class="hud-label">BASE</p>
+                    <p class="hud-val">Kongu Engineering College,<br>Perundurai, Erode - 638060</p>
+
+                    <div class="venue-highlight">
+                        <i class="fas fa-crosshairs"></i> TARGET: C K Prahalad Seminar Hall
                     </div>
-                </div>
-                <div class="contact-item highlight">
-                    <i class="fas fa-search-location"></i>
-                    <div>
-                        <h4>SPECIFIC VENUE</h4>
-                        <p>C K Prahalad Seminar Hall<br>(MCA/MBA Block)</p>
-                    </div>
+
+                    <a href="https://www.google.com/maps/place/Kongu+Engineering+College/@11.2741632,77.6070222,17z"
+                        target="_blank" class="hud-btn">
+                        <i class="fas fa-satellite"></i> SATELLITE VIEW
+                    </a>
                 </div>
             </div>
-            <div class="map-link">
-                <a href="https://maps.app.goo.gl/somewhere" target="_blank" class="cyber-link">[ INITIATE SATELLITE VIEW
-                    ]</a>
+
+            <!-- Personnel Node -->
+            <div class="hud-card personnel-card">
+                <div class="hud-header">
+                    <i class="fas fa-users-cog"></i> PERSONNEL_MANIFEST
+                </div>
+                <div class="hud-body">
+                    <div class="person-group">
+                        <p class="hud-label">FACULTY LEAD</p>
+                        <p class="hud-val">Dr. M. Pyingkodi</p>
+                        <a href="tel:9943114104" class="hud-link">99431 14104</a>
+                    </div>
+
+                    <div class="person-group">
+                        <p class="hud-label">STUDENT OPS</p>
+                        <div class="student-row">
+                            <span>Balaji Hariharan S</span>
+                            <a href="tel:8754885775" class="hud-link">87548 85775</a>
+                        </div>
+                        <div class="student-row">
+                            <span>Kaliswary K</span>
+                            <a href="tel:7092503705" class="hud-link">70925 03705</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Uplink Node -->
+            <div class="hud-card uplink-card">
+                <div class="hud-header">
+                    <i class="fas fa-satellite-dish"></i> SIGNAL_UPLINK
+                </div>
+                <div class="hud-body center-content">
+                    <p class="hud-text">Encrypted Channel Open</p>
+                    <a href="mailto:kecmca2k26@gmail.com" class="uplink-email">
+                        <i class="fas fa-envelope"></i> kecmca2k26@gmail.com
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -155,6 +184,12 @@
 
     <script src="data.js"></script>
     <script src="script.js"></script>
+
+    <!-- Doomsday Theme Code -->
+    <audio id="doomsday-theme" loop>
+        <source src="doomsday_theme.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 
 </html>

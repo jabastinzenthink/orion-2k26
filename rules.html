@@ -192,7 +192,15 @@
 
                 let coordsHtml = '';
                 event.coordinators.forEach(coord => {
-                    coordsHtml += `<div class="coordinator-card">${coord}</div>`;
+                    const phoneMatch = coord.match(/(\d[\d\s]*\d)/);
+                    if (phoneMatch) {
+                        const number = phoneMatch[0];
+                        const cleanNumber = number.replace(/\s/g, '');
+                        const linkedCoord = coord.replace(number, `<a href="tel:${cleanNumber}" style="color:var(--accent); text-decoration:none; border-bottom: 1px dotted var(--accent);">${number}</a> <i class="fas fa-phone-alt" style="font-size:0.8em; margin-left:5px;"></i>`);
+                        coordsHtml += `<div class="coordinator-card">${linkedCoord}</div>`;
+                    } else {
+                        coordsHtml += `<div class="coordinator-card">${coord}</div>`;
+                    }
                 });
 
                 contentArea.innerHTML = `
@@ -227,6 +235,12 @@
                         <div class="rules-content">
                             ${coordsHtml}
                         </div>
+                    </div>
+
+                    <div style="margin-top: 40px; text-align: center; border-top: 1px solid #333; padding-top: 20px;">
+                        <a href="https://www.google.com/maps/place/Kongu+Engineering+College/@11.2741632,77.6070222,17z" target="_blank" class="back-btn" style="border-style: dashed;">
+                            <i class="fas fa-map-marker-alt"></i> LOCATE BASE STATION
+                        </a>
                     </div>
                 `;
             } else {
