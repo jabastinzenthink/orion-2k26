@@ -79,9 +79,9 @@ const eventData = [
             "Misconduct leads to disqualification."
         ],
         coordinators: [
-            "Sathish S",
-            "Jeeva A",
-            "Danushree VS"
+            "Sathish S : 99949 77141",
+            "Jeeva A : 98656 97423",
+            "Danushree VS : 7418 952 261"
         ]
     },
     {
@@ -170,10 +170,10 @@ const eventData = [
             "Requirement: Participants must market their own product."
         ],
         coordinators: [
-            "Sam Anderson Y",
-            "Sugumar M",
-            "Deepsikha K",
-            "Ruchitha T U"
+            "Sam Anderson Y : 90038 54088 ",
+            "Sugumar M : 96293 41255",
+            "Deepsikha K : 95970 96605",
+            "Ruchitha T U : 63747 78071"
         ]
     }
 ];
