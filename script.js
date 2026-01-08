@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeText, 500);
 
     // --- Doomsday Sound Control ---
-    const audio = document.getElementById('doomsday-theme');
+    const audio = document.getElementById('theme.mpeg');
 
     // Create Toggle Button
     const soundBtn = document.createElement('button');
