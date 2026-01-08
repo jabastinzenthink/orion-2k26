@@ -81,7 +81,7 @@ const eventData = [
         coordinators: [
             "Sathish S : 99949 77141",
             "Jeeva A : 98656 97423",
-            "Danushree V S : 7418 952 261"
+            "Danushree V S : 7418 952 261",
             "Yasiga R : 80123 08585 "
 
         ]
