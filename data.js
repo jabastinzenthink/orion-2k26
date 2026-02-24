@@ -163,3 +163,27 @@ const eventData = [
         ]
     }
 ];
+
+const workshopData = [
+    {
+        id: "cyber-security-workshop",
+        title: "Cyber Security Workshop",
+        subtitle: "(Career Bootcamp)",
+        icon: "fa-user-shield",
+        description: "Join our intensive Cyber Security Workshop. Gain insights into the world of ethical hacking, threat landscapes, and career paths in security. Explore our club to stay updated with the latest in cyber defense.",
+        teamSize: "Open Participation",
+        rules: [
+            "Participants must bring their own laptop for hands-on sessions.",
+            "Free e-certificates will be provided to all registered participants.",
+            "No prior experience required; beginners are welcome.",
+            "Basic understanding of computers and the internet is recommended."
+        ],
+        coordinators: [
+            "Elamugil: 88382 62412",
+            "Karthikeyan P: 95667 23397"
+        ],
+        externalLink: "https://cih-club.vercel.app/",
+        externalLinkText: "Explore Our Club"
+    }
+];
+

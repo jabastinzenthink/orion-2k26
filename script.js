@@ -64,6 +64,36 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCategory(techEvents, 'TECHNICAL EVENTS', 'tech-grid');
     renderCategory(nonTechEvents, 'NON-TECHNICAL EVENTS', 'non-tech-grid');
 
+    // Render Workshop Cards
+    const workshopGrid = document.getElementById('workshop-grid');
+    if (workshopGrid && typeof workshopData !== 'undefined') {
+        workshopData.forEach(workshop => {
+            const card = document.createElement('div');
+            card.className = 'event-card workshop-card reveal-on-scroll';
+            card.setAttribute('data-id', workshop.id);
+
+            card.innerHTML = `
+                <div class="card-gfx">
+                    <div class="card-icon"><i class="fas ${workshop.icon}"></i></div>
+                </div>
+                <h3 class="card-title">${workshop.title}</h3>
+                <div style="color: var(--highlight); font-family: var(--font-mono); margin-bottom: 15px; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">
+                    ${workshop.subtitle || ''}
+                </div>
+                <p class="card-desc">${workshop.description}</p>
+                <div class="read-more">Access Data <i class="fas fa-chevron-right"></i></div>
+            `;
+
+            card.addEventListener('click', () => {
+                playClickSound();
+                setTimeout(() => {
+                    window.location.href = `rules.html?id=${workshop.id}`;
+                }, 400);
+            });
+            workshopGrid.appendChild(card);
+        });
+    }
+
     // --- Countdown Timer ---
     // Target Date: March 5, 2026, 09:00:00 (Assuming start time)
     const eventDate = new Date('March 5, 2026 09:00:00').getTime();
