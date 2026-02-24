@@ -43,6 +43,26 @@ const eventData = [
         ]
     },
     {
+        id: "dance-competition",
+        title: "Dance (Group/Single)",
+        subtitle: "(Rhythm & Style)",
+        icon: "fa-shoe-prints",
+        description: "Express yourself through movement in our high-energy dance competition. Whether you are a solo performer or part of a crew, show us your rhythm and style.",
+        teamSize: "Solo / Group (Max 5)",
+        rules: [
+            "Performance time: 3-5 minutes.",
+            "Bring your music track in a pen drive in MP3 format.",
+            "No offensive moves, lyrics, or costumes.",
+            "Participants will be judged on choreography, energy, and expression.",
+            "Judges' decision is final and binding."
+        ],
+        coordinators: [
+            "SivaPrasath: 94432 56269",
+            "Lipika S: 88385 84003",
+            "Kaliswary K: 70925 03705"
+        ]
+    },
+    {
         id: "fix-and-flex",
         title: "Fix and Flex",
         subtitle: "(Code Debugging)",
@@ -157,6 +177,26 @@ const eventData = [
         ]
     },
     {
+        id: "singing-competition",
+        title: "Singing (Group/Single)",
+        subtitle: "(Vocal Vibe)",
+        icon: "fa-microphone-alt",
+        description: "The floor is yours. From classical to contemporary, enchant the audience with your vocal prowess. Solo or group performances are welcome.",
+        teamSize: "Solo / Group (Max 3)",
+        rules: [
+            "Duration: 3-4 minutes.",
+            "Karaoke or single instrument accompaniment allowed.",
+            "Lyrics must be decent and appropriate.",
+            "Participants will be judged on pitch, rhythm, and stage presence.",
+            "Judges' decision is final."
+        ],
+        coordinators: [
+            "SivaPrasath: 94432 56269",
+            "Lipika S: 88385 84003",
+            "Kaliswary K: 70925 03705"
+        ]
+    },
+    {
         id: "story-to-screen",
         title: "Story To Screen",
         subtitle: "(UseCase to UI)",
@@ -176,6 +216,26 @@ const eventData = [
             "Harini N: 75300 80683",
             "Keerthana M: 97917 49923",
             "Ghautham M: 73390 10563"
+        ]
+    },
+    {
+        id: "talent-show",
+        title: "Talent Show (Mime, Silabam, etc.)",
+        subtitle: "(Elite Talent)",
+        icon: "fa-star",
+        description: "A stage for the extraordinary. Show off your unique skills—be it Mime, Silabam, Magic, or any other performing art. Let your talent speak.",
+        teamSize: "Solo / Group",
+        rules: [
+            "Performance time: 4-6 minutes.",
+            "Bring all necessary props and equipment.",
+            "Dangerous or hazardous acts (fire, sharp objects) are strictly prohibited.",
+            "Performance must be suitable for a general audience.",
+            "Judges' decision is final."
+        ],
+        coordinators: [
+            "SivaPrasath: 94432 56269",
+            "Lipika S: 88385 84003",
+            "Kaliswary K: 70925 03705"
         ]
     }
 ];
