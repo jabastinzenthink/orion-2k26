@@ -265,7 +265,13 @@
             // Parse URL Parameter
             const urlParams = new URLSearchParams(window.location.search);
             const eventId = urlParams.get('id');
-            const event = eventData.find(e => e.id === eventId);
+
+            // Search in both events and workshops
+            let event = eventData.find(e => e.id === eventId);
+            if (!event && typeof workshopData !== 'undefined') {
+                event = workshopData.find(w => w.id === eventId);
+            }
+
             const contentArea = document.getElementById('content-area');
 
             if (event) {
@@ -327,6 +333,11 @@
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1miQmNmZt3JqvPi3isSw8ejKA5eULTukpJN5lR1YTTKagig/viewform?usp=send_form" target="_blank" class="back-btn" style="border-style: solid; background: rgba(0, 255, 65, 0.1);">
                             <i class="fas fa-file-signature"></i> INITIATE REGISTRATION
                         </a>
+                        ${event.externalLink ? `
+                        <a href="${event.externalLink}" target="_blank" class="back-btn" style="border-style: solid; background: rgba(0, 255, 65, 0.2); border-color: var(--highlight);">
+                            <i class="fas fa-external-link-alt"></i> ${event.externalLinkText || 'EXPLORE'}
+                        </a>
+                        ` : ''}
                         <a href="https://www.google.com/maps/place/Kongu+Engineering+College/@11.2741632,77.6070222,17z" target="_blank" class="back-btn" style="border-style: dashed;">
                             <i class="fas fa-map-marker-alt"></i> LOCATE BASE STATION
                         </a>
