@@ -229,12 +229,6 @@
 
     <footer>
         <p>&copy; 2026 ORION. SYSTEM ONLINE.</p>
-        <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/mca-kec-6162063a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                target="_blank" class="footer-social-link" style="font-size: 0.9rem; padding: 8px 20px;">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-        </div>
     </footer>
 
     <script src="data.js"></script>
@@ -271,7 +265,13 @@
             // Parse URL Parameter
             const urlParams = new URLSearchParams(window.location.search);
             const eventId = urlParams.get('id');
-            const event = eventData.find(e => e.id === eventId);
+
+            // Search in both events and workshops
+            let event = eventData.find(e => e.id === eventId);
+            if (!event && typeof workshopData !== 'undefined') {
+                event = workshopData.find(w => w.id === eventId);
+            }
+
             const contentArea = document.getElementById('content-area');
 
             if (event) {

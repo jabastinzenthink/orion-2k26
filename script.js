@@ -19,29 +19,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render Event Cards
     eventData.forEach(event => {
+        const card = createEventCard(event);
+        eventsGrid.appendChild(card);
+    });
+
+    // Render Workshop Cards (if exists)
+    const workshopGrid = document.getElementById('workshop-grid');
+    if (workshopGrid && typeof workshopData !== 'undefined') {
+        workshopData.forEach(workshop => {
+            const card = createEventCard(workshop, 'workshop-card');
+            workshopGrid.appendChild(card);
+        });
+    }
+
+    function createEventCard(data, extraClass = '') {
         const card = document.createElement('div');
-        card.className = 'event-card';
-        card.setAttribute('data-id', event.id);
+        card.className = `event-card ${extraClass}`;
+        card.setAttribute('data-id', data.id);
 
         card.innerHTML = `
-            <div class="card-icon"><i class="fas ${event.icon}"></i></div>
-            <h3 class="card-title">${event.title}</h3>
-            <div style="color: var(--highlight); font-family: var(--font-mono); margin-bottom: 15px; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">
-                ${event.subtitle || ''}
+            <div class="card-icon"><i class="fas ${data.icon}"></i></div>
+            <h3 class="card-title">${data.title}</h3>
+            <div style="color: var(--highlight); font-family: var(--font-mono); margin-bottom: 25px; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">
+                ${data.subtitle || ''}
             </div>
-            <p class="card-desc">${event.description}</p>
+            <p class="card-desc">${data.description}</p>
             <div class="read-more">Access Data <i class="fas fa-chevron-right"></i></div>
         `;
 
         card.addEventListener('click', () => {
             playClickSound();
-            // Increased delay to 400ms to ensure sound is audible
             setTimeout(() => {
-                window.location.href = `rules.html?id=${event.id}`;
+                window.location.href = `rules.html?id=${data.id}`;
             }, 400);
         });
-        eventsGrid.appendChild(card);
-    });
+        return card;
+    }
 
     // --- Countdown Timer ---
     // Target Date: March 5, 2026, 09:00:00 (Assuming start time)
