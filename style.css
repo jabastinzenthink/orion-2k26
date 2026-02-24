@@ -481,15 +481,23 @@ h1.glitch-large {
     border: 1px solid var(--border-color);
     padding: 30px;
     position: relative;
-    transition: all 0.3s;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.3s;
     cursor: pointer;
     overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .event-card:hover {
     border-color: var(--accent);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+    box-shadow:
+        20px 20px 60px rgba(0, 0, 0, 0.7),
+        -5px -5px 20px rgba(0, 255, 65, 0.05);
+}
+
+.event-card>* {
+    transform: translateZ(30px);
 }
 
 .event-card::before {
@@ -1014,8 +1022,16 @@ footer {
     border-color: var(--highlight) !important;
     background: rgba(204, 255, 0, 0.02) !important;
     border-style: dashed !important;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
 }
 
 .workshop-card:hover {
-    box-shadow: 0 0 30px rgba(204, 255, 0, 0.1) !important;
+    box-shadow: 0 20px 50px rgba(204, 255, 0, 0.15) !important;
+    transform: translateY(-12px) rotateX(4deg) rotateY(4deg) !important;
+}
+
+.workshop-card>* {
+    transform: translateZ(40px);
 }
