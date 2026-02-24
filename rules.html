@@ -229,6 +229,12 @@
 
     <footer>
         <p>&copy; 2026 ORION. SYSTEM ONLINE.</p>
+        <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/mca-kec-6162063a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank" class="footer-social-link" style="font-size: 0.9rem; padding: 8px 20px;">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
     </footer>
 
     <script src="data.js"></script>
@@ -327,6 +333,11 @@
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1miQmNmZt3JqvPi3isSw8ejKA5eULTukpJN5lR1YTTKagig/viewform?usp=send_form" target="_blank" class="back-btn" style="border-style: solid; background: rgba(0, 255, 65, 0.1);">
                             <i class="fas fa-file-signature"></i> INITIATE REGISTRATION
                         </a>
+                        ${event.externalLink ? `
+                        <a href="${event.externalLink}" target="_blank" class="back-btn" style="border-style: solid; background: rgba(0, 255, 65, 0.2); border-color: var(--highlight);">
+                            <i class="fas fa-external-link-alt"></i> ${event.externalLinkText || 'EXPLORE'}
+                        </a>
+                        ` : ''}
                         <a href="https://www.google.com/maps/place/Kongu+Engineering+College/@11.2741632,77.6070222,17z" target="_blank" class="back-btn" style="border-style: dashed;">
                             <i class="fas fa-map-marker-alt"></i> LOCATE BASE STATION
                         </a>
