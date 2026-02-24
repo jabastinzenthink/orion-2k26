@@ -29,8 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         events.forEach(event => {
             const card = document.createElement('div');
-            card.className = 'event-card';
+            card.className = 'event-card reveal-on-scroll';
             card.setAttribute('data-id', event.id);
+            card.style.transitionDelay = `${(events.indexOf(event) % 3) * 0.1}s`;
 
             card.innerHTML = `
                 <div class="card-gfx">
@@ -230,5 +231,24 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('audio_time', audio.currentTime);
         });
     }
+
+    // --- Scroll Animations (Intersection Observer) ---
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                scrollObserver.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+        scrollObserver.observe(el);
+    });
 
 });
