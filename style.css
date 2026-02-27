@@ -662,37 +662,82 @@ h1.glitch-large {
     gap: 10px;
 }
 
-/* Spot Registration Badge */
-.spot-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+/* Floating Spot Registration Circle */
+.spot-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1500;
+    width: 110px;
+    height: 110px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(0, 20, 0, 0.85);
-    border: 1px solid var(--accent);
+    justify-content: center;
+}
+
+.spot-float-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--accent);
+    border-right-color: var(--accent);
+    animation: spot-ring-spin 3s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes spot-ring-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spot-float-inner {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(0, 10, 0, 0.92);
+    border: 2px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3), inset 0 0 15px rgba(0, 255, 65, 0.1);
+    cursor: default;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.spot-float:hover .spot-float-inner {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 20px rgba(0, 255, 65, 0.15);
+}
+
+.spot-float-text {
     color: var(--accent);
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.5rem;
     font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
     text-transform: uppercase;
-    z-index: 5;
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
-    transform: translateZ(40px);
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    max-width: 70px;
 }
 
 .spot-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background: var(--accent);
     border-radius: 50%;
     display: inline-block;
     animation: spot-pulse 1.5s ease-in-out infinite;
-    box-shadow: 0 0 6px var(--accent);
+    box-shadow: 0 0 8px var(--accent);
 }
 
 @keyframes spot-pulse {
@@ -701,15 +746,40 @@ h1.glitch-large {
     100% {
         opacity: 1;
         transform: scale(1);
-        box-shadow: 0 0 6px var(--accent);
+        box-shadow: 0 0 8px var(--accent);
     }
 
     50% {
-        opacity: 0.5;
-        transform: scale(0.7);
-        box-shadow: 0 0 2px var(--accent);
+        opacity: 0.4;
+        transform: scale(0.6);
+        box-shadow: 0 0 3px var(--accent);
     }
 }
+
+@media (max-width: 768px) {
+    .spot-float {
+        bottom: 20px;
+        left: 20px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .spot-float-inner {
+        width: 74px;
+        height: 74px;
+    }
+
+    .spot-float-text {
+        font-size: 0.42rem;
+        max-width: 58px;
+    }
+
+    .spot-dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+
 
 /* Modal */
 .modal {

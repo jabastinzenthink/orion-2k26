@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transitionDelay = `${(events.indexOf(event) % 3) * 0.1}s`;
 
             card.innerHTML = `
-                <div class="spot-badge"><span class="spot-dot"></span> Spot Registration Available</div>
                 <div class="card-gfx">
                     <div class="card-icon"><i class="fas ${event.icon}"></i></div>
                     ${event.category ? `<div class="category-tag"><i class="fas fa-star"></i> ${event.category}</div>` : ''}
