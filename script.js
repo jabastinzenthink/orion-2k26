@@ -227,26 +227,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Play Function (Handles persistence state)
         const startAudio = () => {
-            audio.play().then(() => {
-                // If successful, we are "playing"
-                localStorage.setItem('audio_playing', 'true');
-            }).catch(error => {
-                console.log("Autoplay blocked:", error);
-                // If blocked, wait for interaction (which is handled by the global click listener below)
-            });
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // If successful, we are "playing"
+                    localStorage.setItem('audio_playing', 'true');
+                }).catch(error => {
+                    console.log("Autoplay blocked by browser. User interaction required:", error);
+                    // If blocked, wait for interaction (which is handled by the global click listener below)
+                });
+            }
         };
 
         // 3. Try to play immediately (Works if "audio_playing" was true and browser allows, or just try anyway)
-        // Note: Browsers usually block this unless there was a previous interaction on the domain, 
-        // but restoring context might help in some browsers or if the user refreshed.
         startAudio();
 
         // 4. Global fallback: Start audio on ANY first interaction if not playing
         const interactionStart = () => {
             if (audio.paused) {
-                audio.play().then(() => {
-                    localStorage.setItem('audio_playing', 'true');
-                }).catch(e => console.log("Still blocked", e));
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        localStorage.setItem('audio_playing', 'true');
+                    }).catch(e => console.log("Still blocked", e));
+                }
             }
             // Once interacted, we can likely remove this listener or let it be harmless
             document.removeEventListener('click', interactionStart);
